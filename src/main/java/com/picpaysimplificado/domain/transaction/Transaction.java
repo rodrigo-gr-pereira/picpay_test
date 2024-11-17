@@ -2,6 +2,7 @@ package com.picpaysimplificado.domain.transaction;
 
 import com.picpaysimplificado.domain.user.User;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,8 +24,10 @@ public class Transaction {
     private Long id;
     private BigDecimal amount;
     @ManyToOne
+    @JoinColumn(name = "sender_id")
     private User sender;
     @ManyToOne
+    @JoinColumn(name = "receiver_id")
     private User receiver;
     private LocalDateTime timestamp;
 }
